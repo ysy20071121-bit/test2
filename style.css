@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Kosugi+Maru&display=swap");
 
+/* =========================
+   기본 설정
+========================= */
+
 * {
   box-sizing: border-box;
 }
@@ -16,6 +20,10 @@ body {
   overflow-x: hidden;
 }
 
+button {
+  font-family: inherit;
+}
+
 .page {
   min-height: 100svh;
   position: relative;
@@ -23,18 +31,24 @@ body {
   padding: 7vh 7vw 12vh;
 }
 
+
+/* =========================
+   첫 화면
+========================= */
+
 .hero {
-  background: linear-gradient(
-    to bottom,
-    #fffdf9 57%,
-    #fbc4c933 76%,
-    #fbc4c9 100%
-  );
+  background:
+    linear-gradient(
+      to bottom,
+      #fffdf9 57%,
+      #fbc4c933 76%,
+      #fbc4c9 100%
+    );
 }
 
 .hero-title {
   position: relative;
-  z-index: 2;
+  z-index: 5;
   width: 62%;
 }
 
@@ -62,6 +76,13 @@ h1 {
   background: #fff;
   border-radius: 999px;
   cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.sound:hover,
+.voice:hover,
+.drink:hover {
+  transform: scale(1.06);
 }
 
 .sound {
@@ -76,115 +97,80 @@ h1 {
   width: 80%;
   height: 43%;
   transform: rotate(8deg);
+
   border: 2px solid #7778;
   border-radius: 28px;
   box-shadow: 0 0 18px #7776;
-}
 
-/* 사진 영역 */
-.photos {
-  grid-column: 1 / -1;
-  position: relative;
-  height: 48vw;
-  max-height: 280px;
-  min-height: 190px;
-  margin-top: 2vh;
-  cursor: pointer;
-}
-
-/* 사진칸 */
-.ph {
-  position: absolute;
-  width: 78%;
-  height: 100%;
-  border: 2px solid #7778;
-  border-radius: 22px;
-
-  background: repeating-linear-gradient(
-    135deg,
-    #f2f0eb 0 10px,
-    #eae7e1 10px 20px
-  );
-
-  overflow: hidden;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  transition: 0.55s cubic-bezier(0.22, 0.75, 0.2, 1);
-}
-
-/* 첫 번째 사진 */
-.ph:nth-child(1) {
-  left: 0;
-  z-index: 3;
-  transform: rotate(-2deg);
-}
-
-/* 두 번째 사진 */
-.ph:nth-child(2) {
-  left: 11%;
-  z-index: 2;
-  transform: rotate(3deg);
-}
-
-/* 세 번째 사진 */
-.ph:nth-child(3) {
-  left: 22%;
   z-index: 1;
-  transform: rotate(7deg);
 }
 
-/* 사진 */
-.ph img {
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  max-height: 100%;
-  display: block;
-
-  /* 사진 전체가 보이도록 */
-  object-fit: contain;
-}
-
-/* 기존 placeholder 클래스가 있어도 정상 작동 */
 .placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  color: #888;
+
+  background:
+    repeating-linear-gradient(
+      135deg,
+      #f2f0eb 0 10px,
+      #eae7e1 10px 20px
+    );
 }
+
+
+/* =========================
+   첫 화면 문구
+========================= */
 
 .quote {
   position: absolute;
   left: 9%;
   right: 7%;
   bottom: 15%;
+
   font-size: 18px;
   font-weight: 700;
   line-height: 1.8;
+
+  z-index: 4;
 }
 
 .quote p {
   margin: 0;
+
   opacity: 0;
   transform: translateY(32px);
-  transition: 0.8s ease;
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
 }
 
-.quote p.show {
+.quote p.show,
+.quote p.visible {
   opacity: 1;
   transform: none;
 }
+
+
+/* =========================
+   구분선
+========================= */
 
 .divider {
   position: absolute;
   left: 7%;
   right: 7%;
   bottom: 2.5vh;
+
   display: flex;
   align-items: center;
   gap: 12px;
+
+  z-index: 10;
 }
 
 .divider i {
@@ -197,36 +183,178 @@ h1 {
 .divider b {
   width: 5px;
   height: 5px;
+  flex: 0 0 5px;
+
   background: #555;
   border-radius: 50%;
 }
 
+
+/* =========================
+   캐릭터 페이지
+========================= */
+
 .character {
   display: grid;
+
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto 1fr;
 
-  background: linear-gradient(
-    120deg,
-    #fffdf9 0 70%,
-    color-mix(in srgb, var(--accent) 18%, white)
-  );
+  background:
+    linear-gradient(
+      120deg,
+      #fffdf9 0 70%,
+      color-mix(in srgb, var(--accent) 18%, white)
+    );
 }
 
 .num {
   grid-column: 1 / -1;
+
   font-size: 28px;
   font-weight: 800;
+
+  position: relative;
+  z-index: 5;
 }
+
+
+/* =========================
+   사진 전체 영역
+========================= */
+
+.photos {
+  grid-column: 1 / -1;
+
+  position: relative;
+
+  width: 100%;
+  height: min(48vw, 280px);
+
+  min-height: 190px;
+  max-height: 280px;
+
+  margin-top: 2vh;
+
+  cursor: pointer;
+
+  z-index: 3;
+}
+
+
+/* =========================
+   사진 카드
+========================= */
+
+.ph {
+  position: absolute;
+
+  top: 0;
+
+  width: 78%;
+  height: 100%;
+
+  border: 2px solid #7778;
+  border-radius: 22px;
+
+  /*
+    이미지가 칸을 벗어나지 않도록
+  */
+  overflow: hidden;
+
+  /*
+    이미지가 없을 때도 칸이 보이도록
+  */
+  background:
+    repeating-linear-gradient(
+      135deg,
+      #f2f0eb 0 10px,
+      #eae7e1 10px 20px
+    );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    left 0.55s cubic-bezier(.22,.75,.2,1),
+    transform 0.55s cubic-bezier(.22,.75,.2,1),
+    opacity 0.55s ease;
+
+  /*
+    사진 카드 자체가 너무 커져서
+    화면 밖으로 나가지 않도록
+  */
+  max-width: 78%;
+}
+
+
+/* =========================
+   사진 카드 위치
+========================= */
+
+.ph:nth-child(1) {
+  left: 0;
+  z-index: 3;
+  transform: rotate(-2deg);
+}
+
+.ph:nth-child(2) {
+  left: 11%;
+  z-index: 2;
+  transform: rotate(3deg);
+}
+
+.ph:nth-child(3) {
+  left: 22%;
+  z-index: 1;
+  transform: rotate(7deg);
+}
+
+
+/* =========================
+   실제 이미지
+========================= */
+
+.ph img {
+  /*
+    사진을 칸 안에서 최대한 크게 보여주되
+    절대로 잘리지 않게 함
+  */
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: center;
+
+  display: block;
+
+  /*
+    이미지 자체의 이상한 여백/간격 제거
+  */
+  margin: 0;
+  padding: 0;
+}
+
+
+/* =========================
+   캐릭터 정보
+========================= */
 
 .info {
   grid-column: 1 / -1;
+
   align-self: end;
+
   padding: 2vh 2vw;
+
+  position: relative;
+  z-index: 5;
 }
 
 .info h2 {
   margin: 0;
+
   font-size: 42px;
   letter-spacing: -2px;
   font-weight: 800;
@@ -235,43 +363,68 @@ h1 {
 
 .info small {
   display: block;
+
   color: #777;
+
   margin-top: 5px;
 }
 
 .info p {
   margin: 5px 0;
+
   font-size: 16px;
   line-height: 1.5;
 }
 
+
+/* =========================
+   음성 버튼
+========================= */
+
 .voice {
   width: 40px;
   height: 40px;
+
   margin-top: 7px;
 }
 
+
+/* =========================
+   태그
+========================= */
+
 .tags {
   display: flex;
+
   gap: 7px;
   flex-wrap: wrap;
+
   margin-top: 14px;
 }
 
 .tags span {
   background: var(--accent);
+
   padding: 6px 13px;
+
   border-radius: 999px;
+
   font-size: 13px;
 }
 
-/* 등장 애니메이션 */
+
+/* =========================
+   등장 애니메이션
+========================= */
+
 .reveal {
   opacity: 0;
+
   transform: translateX(80px);
+
   transition:
     opacity 0.7s ease,
-    transform 0.7s cubic-bezier(0.2, 0.75, 0.2, 1);
+    transform 0.7s cubic-bezier(.2,.75,.2,1);
 }
 
 .r1 {
@@ -295,11 +448,11 @@ h1 {
 }
 
 .r6 {
-  transition-delay: 0.5s;
+  transition-delay: 0.50s;
 }
 
 .r7 {
-  transition-delay: 0.6s;
+  transition-delay: 0.60s;
 }
 
 .reveal.visible {
@@ -307,44 +460,135 @@ h1 {
   transform: none;
 }
 
+
+/* =========================
+   사진 등장 애니메이션
+========================= */
+
 .reveal-photo {
   opacity: 0;
+
   transform: translateX(-55px);
-  transition: 0.75s cubic-bezier(0.2, 0.75, 0.2, 1);
+
+  transition:
+    opacity 0.75s ease,
+    transform 0.75s cubic-bezier(.2,.75,.2,1);
 }
 
 .reveal-photo.visible {
   opacity: 1;
-  transform: none;
+
+  transform: translateX(0);
 }
 
-/* 음료 정보 */
+
+/* =========================
+   음료 정보
+========================= */
+
 .drink {
   display: block;
+
   margin-top: 12px;
   padding: 8px 12px;
+
   background: transparent;
 }
 
 .drinkbox {
   max-height: 0;
+
   overflow: hidden;
-  transition: max-height 0.4s ease;
+
+  transition:
+    max-height 0.4s ease,
+    padding 0.4s ease;
+
   padding: 0 5px;
 }
 
 .drinkbox.open {
   max-height: 150px;
+
   padding-top: 12px;
 }
 
-/* 작은 화면 */
-@media (max-width: 380px) {
+
+/* =========================
+   작은 화면
+========================= */
+
+@media (max-width: 600px) {
+
+  .page {
+    padding-left: 6vw;
+    padding-right: 6vw;
+  }
+
+  h1 {
+    font-size: 22vw;
+  }
+
+  .hero-title {
+    width: 75%;
+  }
+
+  .village {
+    right: -25%;
+    width: 90%;
+  }
+
+  .photos {
+    height: 52vw;
+    min-height: 180px;
+  }
+
+  .ph {
+    width: 82%;
+  }
+
+  .ph:nth-child(2) {
+    left: 9%;
+  }
+
+  .ph:nth-child(3) {
+    left: 18%;
+  }
+
+  .info {
+    padding-left: 1vw;
+    padding-right: 1vw;
+  }
+
   .info h2 {
-    font-size: 36px;
+    font-size: 38px;
   }
 
   .quote {
     font-size: 17px;
+  }
+}
+
+
+/* =========================
+   아주 작은 화면
+========================= */
+
+@media (max-width: 380px) {
+
+  .info h2 {
+    font-size: 34px;
+  }
+
+  .quote {
+    font-size: 16px;
+  }
+
+  .photos {
+    min-height: 165px;
+  }
+
+  .ph {
+    width: 84%;
   }
 }
