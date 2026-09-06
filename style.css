@@ -1,594 +1,723 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Kosugi+Maru&display=swap");
 
-/* =========================
+
+/* ========================================
    기본 설정
-========================= */
+======================================== */
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  background: #fffdf9;
-  color: #383532;
-  font-family: "Baloo 2", "Kosugi Maru", "Noto Sans KR", sans-serif;
-  overflow-x: hidden;
+    margin: 0;
+    background: #fffdf9;
+    color: #383532;
+
+    font-family:
+        "Baloo 2",
+        "Kosugi Maru",
+        "Noto Sans KR",
+        sans-serif;
+
+    overflow-x: hidden;
 }
 
 button {
-  font-family: inherit;
+    font-family: inherit;
 }
 
 .page {
-  min-height: 100svh;
-  position: relative;
-  overflow: hidden;
-  padding: 7vh 7vw 12vh;
+    min-height: 100svh;
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding:
+        7vh
+        7vw
+        12vh;
 }
 
 
-/* =========================
-   첫 화면
-========================= */
+/* ========================================
+   HERO
+======================================== */
 
 .hero {
-  background:
-    linear-gradient(
-      to bottom,
-      #fffdf9 57%,
-      #fbc4c933 76%,
-      #fbc4c9 100%
-    );
+    background:
+        linear-gradient(
+            to bottom,
+            #fffdf9 57%,
+            #fbc4c933 76%,
+            #fbc4c9 100%
+        );
 }
 
 .hero-title {
-  position: relative;
-  z-index: 5;
-  width: 62%;
+    position: relative;
+
+    z-index: 5;
+
+    width: 62%;
 }
 
-h1 {
-  margin: 0;
-  color: #fff;
-  font-size: 20vw;
-  line-height: 0.9;
-  letter-spacing: -6px;
-  -webkit-text-stroke: 3px #222;
-  text-shadow: 2px 3px #222;
-  font-weight: 800;
+.hero-title h1 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: clamp(90px, 20vw, 260px);
+
+    line-height: 0.9;
+
+    letter-spacing: -6px;
+
+    font-weight: 800;
+
+    -webkit-text-stroke: 3px #222;
+
+    text-shadow:
+        2px 3px #222;
 }
 
 .hero-title p {
-  font-family: "Kosugi Maru", sans-serif;
-  font-size: 14px;
-  margin: 16px 0;
+    margin: 16px 0;
+
+    font-family:
+        "Kosugi Maru",
+        sans-serif;
+
+    font-size: 14px;
 }
+
+
+/* ========================================
+   버튼
+======================================== */
 
 .sound,
 .voice,
 .drink {
-  border: 1.5px solid #555;
-  background: #fff;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: transform 0.2s ease, background 0.2s ease;
+    border: 1.5px solid #555;
+
+    background: #ffffff;
+
+    border-radius: 999px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
 }
 
 .sound:hover,
 .voice:hover,
 .drink:hover {
-  transform: scale(1.06);
+    transform: scale(1.06);
+}
+
+.sound:active,
+.voice:active,
+.drink:active {
+    transform: scale(0.95);
 }
 
 .sound {
-  width: 40px;
-  height: 40px;
+    width: 40px;
+    height: 40px;
 }
+
+
+/* ========================================
+   마을 영역
+======================================== */
 
 .village {
-  position: absolute;
-  right: -10%;
-  top: 20%;
-  width: 80%;
-  height: 43%;
-  transform: rotate(8deg);
+    position: absolute;
 
-  border: 2px solid #7778;
-  border-radius: 28px;
-  box-shadow: 0 0 18px #7776;
+    right: -10%;
+    top: 20%;
 
-  z-index: 1;
+    width: 80%;
+    height: 43%;
+
+    transform: rotate(8deg);
+
+    border: 2px solid #7778;
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 0 18px #7776;
+
+    background:
+        repeating-linear-gradient(
+            135deg,
+            #f2f0eb 0 10px,
+            #eae7e1 10px 20px
+        );
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
 }
 
-.placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.village-text {
+    color: #888;
 
-  color: #888;
+    font-size: 20px;
 
-  background:
-    repeating-linear-gradient(
-      135deg,
-      #f2f0eb 0 10px,
-      #eae7e1 10px 20px
-    );
+    opacity: 0.7;
 }
 
 
-/* =========================
-   첫 화면 문구
-========================= */
+/* ========================================
+   인용문
+======================================== */
 
 .quote {
-  position: absolute;
-  left: 9%;
-  right: 7%;
-  bottom: 15%;
+    position: absolute;
 
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.8;
+    left: 9%;
+    right: 7%;
 
-  z-index: 4;
+    bottom: 15%;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    line-height: 1.8;
 }
 
 .quote p {
-  margin: 0;
+    margin: 0;
 
-  opacity: 0;
-  transform: translateY(32px);
+    opacity: 0;
 
-  transition:
-    opacity 0.8s ease,
-    transform 0.8s ease;
+    transform: translateY(30px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
 }
 
-.quote p.show,
 .quote p.visible {
-  opacity: 1;
-  transform: none;
+    opacity: 1;
+
+    transform: translateY(0);
 }
 
 
-/* =========================
+/* ========================================
    구분선
-========================= */
+======================================== */
 
 .divider {
-  position: absolute;
-  left: 7%;
-  right: 7%;
-  bottom: 2.5vh;
+    position: absolute;
 
-  display: flex;
-  align-items: center;
-  gap: 12px;
+    left: 7%;
+    right: 7%;
 
-  z-index: 10;
+    bottom: 2.5vh;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
 }
 
 .divider i {
-  height: 2px;
-  background: #555;
-  flex: 1;
-  border-radius: 4px;
+    height: 2px;
+
+    background: #555;
+
+    flex: 1;
+
+    border-radius: 4px;
 }
 
 .divider b {
-  width: 5px;
-  height: 5px;
-  flex: 0 0 5px;
+    width: 5px;
+    height: 5px;
 
-  background: #555;
-  border-radius: 50%;
+    flex: 0 0 5px;
+
+    background: #555;
+
+    border-radius: 50%;
 }
 
 
-/* =========================
+/* ========================================
    캐릭터 페이지
-========================= */
+======================================== */
 
 .character {
-  display: grid;
+    display: grid;
 
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto 1fr;
+    grid-template-columns: 1fr 1fr;
 
-  background:
-    linear-gradient(
-      120deg,
-      #fffdf9 0 70%,
-      color-mix(in srgb, var(--accent) 18%, white)
-    );
+    grid-template-rows:
+        auto
+        auto
+        1fr;
+
+    background:
+        linear-gradient(
+            120deg,
+            #fffdf9 0%,
+            #fffdf9 70%,
+            color-mix(
+                in srgb,
+                var(--accent) 18%,
+                white
+            )
+        );
 }
+
+
+/* ========================================
+   번호
+======================================== */
 
 .num {
-  grid-column: 1 / -1;
+    grid-column: 1 / -1;
 
-  font-size: 28px;
-  font-weight: 800;
+    font-size: 28px;
 
-  position: relative;
-  z-index: 5;
+    font-weight: 800;
+
+    line-height: 1;
 }
 
 
-/* =========================
-   사진 전체 영역
-========================= */
+/* ========================================
+   사진 영역
+======================================== */
 
 .photos {
-  grid-column: 1 / -1;
+    grid-column: 1 / -1;
 
-  position: relative;
+    position: relative;
 
-  width: 100%;
-  height: min(48vw, 280px);
+    width: 100%;
 
-  min-height: 190px;
-  max-height: 280px;
+    height: min(48vw, 360px);
 
-  margin-top: 2vh;
+    min-height: 220px;
 
-  cursor: pointer;
+    margin-top: 4vh;
 
-  z-index: 3;
+    cursor: pointer;
+
+    /* JS가 작동하지 않아도 사진은 보이게 */
+    opacity: 1;
+
+    transform: translateX(0);
+
+    transition:
+        opacity 0.75s ease,
+        transform 0.75s cubic-bezier(.2,.75,.2,1);
 }
 
 
-/* =========================
+/* JS가 정상적으로 실행되면
+   처음에는 왼쪽에서 들어오도록 */
+.js-enabled .photos:not(.visible) {
+    opacity: 0;
+
+    transform: translateX(-70px);
+}
+
+.js-enabled .photos.visible {
+    opacity: 1;
+
+    transform: translateX(0);
+}
+
+
+/* ========================================
    사진 카드
-========================= */
+======================================== */
 
 .ph {
-  position: absolute;
+    position: absolute;
 
-  top: 0;
+    top: 0;
 
-  width: 78%;
-  height: 100%;
+    width: 78%;
+    height: 100%;
 
-  border: 2px solid #7778;
-  border-radius: 22px;
+    border:
+        2px solid #7778;
 
-  /*
-    이미지가 칸을 벗어나지 않도록
-  */
-  overflow: hidden;
+    border-radius: 22px;
 
-  /*
-    이미지가 없을 때도 칸이 보이도록
-  */
-  background:
-    repeating-linear-gradient(
-      135deg,
-      #f2f0eb 0 10px,
-      #eae7e1 10px 20px
-    );
+    background: #ffffff;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    overflow: hidden;
 
-  transition:
-    left 0.55s cubic-bezier(.22,.75,.2,1),
-    transform 0.55s cubic-bezier(.22,.75,.2,1),
-    opacity 0.55s ease;
+    display: flex;
 
-  /*
-    사진 카드 자체가 너무 커져서
-    화면 밖으로 나가지 않도록
-  */
-  max-width: 78%;
+    align-items: center;
+    justify-content: center;
+
+    transition:
+        left 0.55s cubic-bezier(.22,.75,.2,1),
+        transform 0.55s cubic-bezier(.22,.75,.2,1),
+        opacity 0.55s ease,
+        z-index 0s;
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.05);
 }
 
 
-/* =========================
-   사진 카드 위치
-========================= */
+/* 사진 위치 */
 
 .ph:nth-child(1) {
-  left: 0;
-  z-index: 3;
-  transform: rotate(-2deg);
+    left: 0;
+
+    z-index: 3;
+
+    transform: rotate(-2deg);
 }
 
 .ph:nth-child(2) {
-  left: 11%;
-  z-index: 2;
-  transform: rotate(3deg);
+    left: 11%;
+
+    z-index: 2;
+
+    transform: rotate(3deg);
 }
 
 .ph:nth-child(3) {
-  left: 22%;
-  z-index: 1;
-  transform: rotate(7deg);
+    left: 22%;
+
+    z-index: 1;
+
+    transform: rotate(7deg);
 }
 
 
-/* =========================
+/* ========================================
    실제 이미지
-========================= */
+======================================== */
 
 .ph img {
-  /*
-    사진을 칸 안에서 최대한 크게 보여주되
-    절대로 잘리지 않게 함
-  */
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 
-  object-fit: contain;
-  object-position: center;
+    /*
+       cover가 아니라 contain.
+       따라서 사진을 잘라내지 않음.
+    */
+    object-fit: contain;
 
-  display: block;
+    object-position: center;
 
-  /*
-    이미지 자체의 이상한 여백/간격 제거
-  */
-  margin: 0;
-  padding: 0;
+    display: block;
 }
 
 
-/* =========================
+/* ========================================
+   사진 클릭 시 앞 카드가 오른쪽으로 나감
+======================================== */
+
+.ph.leaving {
+    transform:
+        translateX(125%)
+        rotate(10deg);
+
+    opacity: 0;
+
+    z-index: 10;
+}
+
+
+/* ========================================
    캐릭터 정보
-========================= */
+======================================== */
 
 .info {
-  grid-column: 1 / -1;
+    grid-column: 1 / -1;
 
-  align-self: end;
+    align-self: end;
 
-  padding: 2vh 2vw;
-
-  position: relative;
-  z-index: 5;
+    padding:
+        2vh
+        2vw
+        3vh;
 }
 
 .info h2 {
-  margin: 0;
+    margin: 0;
 
-  font-size: 42px;
-  letter-spacing: -2px;
-  font-weight: 800;
-  line-height: 1;
+    font-size: clamp(38px, 6vw, 64px);
+
+    letter-spacing: -2px;
+
+    font-weight: 800;
+
+    line-height: 1;
 }
 
 .info small {
-  display: block;
+    display: block;
 
-  color: #777;
+    color: #777;
 
-  margin-top: 5px;
+    margin-top: 7px;
+
+    font-size: 15px;
 }
 
 .info p {
-  margin: 5px 0;
+    margin: 6px 0;
 
-  font-size: 16px;
-  line-height: 1.5;
+    font-size: 16px;
+
+    line-height: 1.5;
+}
+
+.info strong {
+    font-weight: 800;
 }
 
 
-/* =========================
+/* ========================================
    음성 버튼
-========================= */
+======================================== */
 
 .voice {
-  width: 40px;
-  height: 40px;
+    width: 40px;
+    height: 40px;
 
-  margin-top: 7px;
+    margin-top: 8px;
 }
 
 
-/* =========================
+/* ========================================
    태그
-========================= */
+======================================== */
 
 .tags {
-  display: flex;
+    display: flex;
 
-  gap: 7px;
-  flex-wrap: wrap;
+    gap: 7px;
 
-  margin-top: 14px;
+    flex-wrap: wrap;
+
+    margin-top: 14px;
 }
 
 .tags span {
-  background: var(--accent);
+    background: var(--accent);
 
-  padding: 6px 13px;
+    padding:
+        6px
+        13px;
 
-  border-radius: 999px;
+    border-radius: 999px;
 
-  font-size: 13px;
+    font-size: 13px;
+
+    font-weight: 600;
 }
 
 
-/* =========================
-   등장 애니메이션
-========================= */
+/* ========================================
+   정보 슬라이드 애니메이션
+======================================== */
 
-.reveal {
-  opacity: 0;
+.reveal-item {
+    opacity: 0;
 
-  transform: translateX(80px);
+    transform: translateX(70px);
 
-  transition:
-    opacity 0.7s ease,
-    transform 0.7s cubic-bezier(.2,.75,.2,1);
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s cubic-bezier(.2,.75,.2,1);
 }
 
-.r1 {
-  transition-delay: 0.05s;
-}
+.reveal-item.visible {
+    opacity: 1;
 
-.r2 {
-  transition-delay: 0.14s;
-}
-
-.r3 {
-  transition-delay: 0.23s;
-}
-
-.r4 {
-  transition-delay: 0.32s;
-}
-
-.r5 {
-  transition-delay: 0.41s;
-}
-
-.r6 {
-  transition-delay: 0.50s;
-}
-
-.r7 {
-  transition-delay: 0.60s;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: none;
+    transform: translateX(0);
 }
 
 
-/* =========================
-   사진 등장 애니메이션
-========================= */
+/* 각각 조금씩 시간차 */
 
-.reveal-photo {
-  opacity: 0;
-
-  transform: translateX(-55px);
-
-  transition:
-    opacity 0.75s ease,
-    transform 0.75s cubic-bezier(.2,.75,.2,1);
+.info h2 {
+    transition-delay: 0.05s;
 }
 
-.reveal-photo.visible {
-  opacity: 1;
+.info small {
+    transition-delay: 0.12s;
+}
 
-  transform: translateX(0);
+.info p:nth-of-type(1) {
+    transition-delay: 0.20s;
+}
+
+.info p:nth-of-type(2) {
+    transition-delay: 0.28s;
+}
+
+.info p:nth-of-type(3) {
+    transition-delay: 0.36s;
+}
+
+.info .voice {
+    transition-delay: 0.44s;
+}
+
+.info .tags {
+    transition-delay: 0.52s;
 }
 
 
-/* =========================
-   음료 정보
-========================= */
+/* ========================================
+   쿠리만쥬 주종 & 안주
+======================================== */
 
 .drink {
-  display: block;
+    display: block;
 
-  margin-top: 12px;
-  padding: 8px 12px;
+    margin-top: 13px;
 
-  background: transparent;
+    padding:
+        8px
+        13px;
+
+    background: transparent;
 }
 
 .drinkbox {
-  max-height: 0;
+    max-height: 0;
 
-  overflow: hidden;
+    overflow: hidden;
 
-  transition:
-    max-height 0.4s ease,
-    padding 0.4s ease;
+    padding:
+        0
+        5px;
 
-  padding: 0 5px;
+    transition:
+        max-height 0.4s ease,
+        padding 0.4s ease;
 }
 
 .drinkbox.open {
-  max-height: 150px;
+    max-height: 180px;
 
-  padding-top: 12px;
+    padding-top: 12px;
+}
+
+.drinkbox p {
+    margin: 0;
+
+    font-size: 14px;
 }
 
 
-/* =========================
-   작은 화면
-========================= */
+/* ========================================
+   모바일
+======================================== */
 
 @media (max-width: 600px) {
 
-  .page {
-    padding-left: 6vw;
-    padding-right: 6vw;
-  }
+    .page {
+        padding:
+            6vh
+            7vw
+            12vh;
+    }
 
-  h1 {
-    font-size: 22vw;
-  }
+    .hero-title {
+        width: 90%;
+    }
 
-  .hero-title {
-    width: 75%;
-  }
+    .hero-title h1 {
+        font-size: 24vw;
 
-  .village {
-    right: -25%;
-    width: 90%;
-  }
+        letter-spacing: -4px;
+    }
 
-  .photos {
-    height: 52vw;
-    min-height: 180px;
-  }
+    .village {
+        right: -20%;
 
-  .ph {
-    width: 82%;
-  }
+        width: 100%;
 
-  .ph:nth-child(2) {
-    left: 9%;
-  }
+        top: 24%;
 
-  .ph:nth-child(3) {
-    left: 18%;
-  }
+        height: 38%;
+    }
 
-  .info {
-    padding-left: 1vw;
-    padding-right: 1vw;
-  }
+    .quote {
+        bottom: 14%;
 
-  .info h2 {
-    font-size: 38px;
-  }
+        font-size: 16px;
+    }
 
-  .quote {
-    font-size: 17px;
-  }
+    .photos {
+        height: 62vw;
+
+        min-height: 210px;
+    }
+
+    .ph {
+        width: 82%;
+    }
+
+    .ph:nth-child(2) {
+        left: 9%;
+    }
+
+    .ph:nth-child(3) {
+        left: 18%;
+    }
+
+    .info {
+        padding:
+            2vh
+            1vw
+            3vh;
+    }
+
+    .info h2 {
+        font-size: 42px;
+    }
+
 }
 
 
-/* =========================
+/* ========================================
    아주 작은 화면
-========================= */
+======================================== */
 
 @media (max-width: 380px) {
 
-  .info h2 {
-    font-size: 34px;
-  }
+    .info h2 {
+        font-size: 36px;
+    }
 
-  .quote {
-    font-size: 16px;
-  }
+    .quote {
+        font-size: 15px;
+    }
 
-  .photos {
-    min-height: 165px;
-  }
+    .photos {
+        min-height: 190px;
+    }
 
-  .ph {
-    width: 84%;
-  }
 }
